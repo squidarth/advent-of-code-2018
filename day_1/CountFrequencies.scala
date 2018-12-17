@@ -1,6 +1,7 @@
 import scala.io.{Source, BufferedSource}
 import scala.collection.immutable.Set
 import scala.collection.immutable.Vector
+import scala.annotation.tailrec
 
 object CountFrequencies {
   def numberList(src: BufferedSource) : Iterator[Int] = {
@@ -18,6 +19,7 @@ object CountFrequencies {
     numberList(src).sum
   }
 
+  @tailrec
   def getFirstRepeatedFrequencyRecurse( nums: Vector[Int], currIndex: Int, currSum: Int, seenFreqs: Set[Int]) : Int = {
     (seenFreqs contains currSum) match {
       case true => currSum
